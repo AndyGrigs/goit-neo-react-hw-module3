@@ -21,15 +21,18 @@ const startState = [
 
 function App() {
   const [contacts, setContacts] = useState(startState);
-   const addContact =()=>{}
+   
+  const addContact =(newContact)=>{
+      setContacts(prev=> [...prev, newContact])
+   }
    const deleteContact =()=>{}
    const filterContacts =()=>{}
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className=" flex flex-col min-h-screen bg-white">
       <Hreader />
 
-      <div className=" bg-white overflow-hidden ">
+      <div className=" flex-grow bg-white overflow-hidden ">
         <div className="max-w-7xl mx-auto">
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center">
@@ -38,7 +41,7 @@ function App() {
                 </h1>
               </div>
 
-              <ContactForm />
+              <ContactForm anAddContact={addContact} />
               <SearchBox />
               <ContactList contacts={contacts}/>
             </main>
